@@ -1,0 +1,25 @@
+name: Auto-Deploy Generated Site
+
+on:
+  push:
+    paths:
+      - 'generated-site/**'
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Move generated files to root
+        run: |
+          rm -rf index.html about.html contact.html
+          cp -r generated-site/* .
+          git config user.name "ChatGPT Actions Bot"
+          git config user.email "actions@chatgpt.local"
+          git add index.html about.html contact.html
+          git commit -m "Deploy new generated site from automation folder"
+          git push origin main
