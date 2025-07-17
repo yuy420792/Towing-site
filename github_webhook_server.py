@@ -36,10 +36,14 @@ def webhook():
 
     api_url = f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{TARGET_PATH}"
     payload = {
-        "message": "Auto push from Render webhook",
-        "content": encoded,
-        "branch": BRANCH
+    "message": "Auto push from Render webhook",
+    "content": encoded,
+    "branch": BRANCH,
+    "committer": {
+        "name": "Render Bot",
+        "email": "render@yourdomain.com"
     }
+}
 
     if sha:
         payload["sha"] = sha
