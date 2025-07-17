@@ -10,7 +10,7 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # Set this in Render
 REPO = "Towing-site"
 OWNER = "yuy420792"
 BRANCH = "main"
-TARGET_PATH  "generated-site/index.html"
+TARGET_PATH = "generated-site/index.html"
 
 def get_file_sha():
     api_url = f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{TARGET_PATH}"
